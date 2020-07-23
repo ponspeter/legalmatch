@@ -14,11 +14,11 @@ PROCEDURE :
     b. Open the project in your favorite ide (IntelliJ) or open  
        terminal or command prompt. Type mvn spring-boot:run
     c. Wait until it load, once ready it can accept request in      
-       localhost:9090
+       http://localhost:9090
 5. Run the frontend
     a. go to exam-fe (e.g: cd/exam-fe)
     b. Open the project in your favorite ide (Visual Studio Code) 
       or open terminal or command prompt.
     c. Type npm install to download all dependencies
     d. Type ng serve to run front end
-    e. once ready, open the request in localhost:4200/login
+    e. once ready, open the request in http://localhost:4200/login
