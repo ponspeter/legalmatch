@@ -1,0 +1,241 @@
+<h2>Create Employee</h2>
+<div [hidden]="submitted" style="width: 800px;">
+    <form>
+        <!-- start personal information -->
+        <h5>Personal Information</h5>
+        <div class="form-row" id="personInfo">
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required [(ngModel)]="personal.firstName" name="firstName" placeholder="Your first name" ng-required="true" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Middle Name</label>
+                    <input type="text" class="form-control" id="middleName" required [(ngModel)]="personal.middleName" name="middleName" placeholder="Your middle name" ng-required="true" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required [(ngModel)]="personal.lastName" name="lastName" placeholder="Your last name" ng-required="true" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Marital Status</label>
+                    <input type="text" class="form-control" id="maritalStatus" required [(ngModel)]="personal.maritalStatus" name="maritalStatus" placeholder="Your marital status" ng-required="true" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Birth Date</label>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="bDate" placeholder="Choose a date" class="form-control" id="birthDate" required [(ngModel)]="personal.birthDate" name="birthDate" ng-required="true">
+                        <mat-datepicker-toggle matSuffix [for]="bDate"></mat-datepicker-toggle>
+                        <mat-datepicker #bDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Position</label>
+                    <input type="text" class="form-control" id="position" required [(ngModel)]="employee.position" name="position" placeholder="Your Position" ng-required="true" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Date Hired</label>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a date" class="form-control" id="dateHired" required [(ngModel)]="employee.dateHired" name="dateHired">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="maxl">
+                <span>Gender :  </span>
+
+                <label class=" radio inline"> 
+                <span>  Male </span> 
+                <input type="radio" name="gender" id="gender" required [(ngModel)]="personal.gender" value="MALE" checked>
+                
+                <span>  Female </span> 
+                <input type="radio" name="gender" id="gender" required [(ngModel)]="personal.gender" value="FEMALE">
+            </label>
+            </div>
+        </div>
+        <!-- end personal information -->
+        <!-- start contact information -->
+        <h5>Contact Information</h5>
+
+        <div class="form-group">
+            <div class="maxl">
+                <span>Main :  </span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" required [(ngModel)]="primaryContact.phone" placeholder="Your Phone number" name="phone">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobile" required [(ngModel)]="primaryContact.mobile" placeholder="Your Mobile number" name="mobile">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="email" required [(ngModel)]="primaryContact.email" placeholder="Email@example.com" name="email">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="maxl">
+                <span>Optional :  </span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" required [(ngModel)]="secondaryContact.phone" placeholder="Your Phone number" name="phone">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Mobile Number</label>
+                    <input type="text" class="form-control" id="mobile" required [(ngModel)]="secondaryContact.mobile" placeholder="Your Mobile number" name="mobile">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="email" required [(ngModel)]="secondaryContact.email" placeholder="Email@example.com" name="email">
+                </div>
+            </div>
+        </div>
+        <!-- end contact information -->
+        <!-- start address information -->
+        <h5>Addresses Information</h5>
+
+        <div class="form-group">
+            <div class="maxl">
+                <span>Main :  </span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">House Number</label>
+                    <input type="text" class="form-control" id="houseNumber" required [(ngModel)]="primaryAddress.houseNumber" placeholder="House number" name="houseNumber">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Street</label>
+                    <input type="text" class="form-control" id="street" required [(ngModel)]="primaryAddress.street" placeholder="Street" name="street">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Town</label>
+                    <input type="text" class="form-control" id="town" required [(ngModel)]="primaryAddress.town" placeholder="Town" name="town">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Province</label>
+                    <input type="text" class="form-control" id="province" required [(ngModel)]="primaryAddress.province" placeholder="Province" name="province">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Postal Code</label>
+                    <input type="text" class="form-control" id="postalCode" required [(ngModel)]="primaryAddress.postalCode" placeholder="Postal Code" name="postalCode">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="maxl">
+                <span>Optional :  </span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">House Number</label>
+                    <input type="text" class="form-control" id="houseNumber" required [(ngModel)]="secondaryAddress.houseNumber" placeholder="House number" name="houseNumber">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Street</label>
+                    <input type="text" class="form-control" id="street" required [(ngModel)]="secondaryAddress.street" placeholder="Street" name="street">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Town</label>
+                    <input type="text" class="form-control" id="town" required [(ngModel)]="secondaryAddress.town" placeholder="Town" name="town">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Province</label>
+                    <input type="text" class="form-control" id="province" required [(ngModel)]="secondaryAddress.province" placeholder="Province" name="province">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="md-form form-group">
+                    <label for="name">Postal Code</label>
+                    <input type="text" class="form-control" id="postalCode" required [(ngModel)]="secondaryAddress.postalCode" placeholder="Postal Code" name="postalCode">
+                </div>
+            </div>
+        </div>
+        <!-- end address information -->
+    </form>
+    <div cclass="col-md-4 text-center">
+        <button type="button" (click)="btnSubmit()" class="btn btn-success">Submit</button>
+        <button type="button" (click)="btnCancel()" class="btn btn-info " style="margin-left: 10px ">Cancel</button>
+    </div>
+
+</div>
+
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+    <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

@@ -1,0 +1,10 @@
+package com.legalmatch.exam.enums;
+
+public enum ResponseCode {
+
+    SUCCESS, // GENERAL SUCCESS
+    SUCCESS_DELETE, // SUCCESS IF DELETE
+    BAD_REQUEST, // GENERAL BAD REQUEST
+    NOT_FOUND, // NOT FOUND
+    APPLICATION_ERROR, // GENERAL INTERNAL ERROR
+}
