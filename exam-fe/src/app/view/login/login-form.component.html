@@ -1,16 +1,23 @@
 <h2>Login</h2>
-<form>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" placeholder="Username" name="username">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" required [(ngModel)]="user.password" placeholder="Password" name="password" />
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="col-sm-4">
+        <label for="password">Username</label>
+        <input type="text" class="form-control" required [(ngModel)]="user.username" formControlName="username" [ngClass]="{'is-invalid': submitted && f.username.errors}" placeholder="Username" name="username" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Required Username</div>
+        </div>
     </div>
 
+    <div class="col-sm-4">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" required [(ngModel)]="user.password" formControlName="password" [ngClass]="{'is-invalid': submitted && f.password.errors}" placeholder="Password" name="password" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Required Password</div>
+        </div>
+    </div>
+    <br>
+    <div cclass="col-md-4 text-center">
+        <button type="submit" (click)="btnSubmit()" class="btn btn-success">Login</button>
+    </div>
 </form>
-<div cclass="col-md-4 text-center">
-    <button type="button" (click)="btnSubmit()" class="btn btn-success">Login</button>
-    <button type="button" (click)="btnCancel()" class="btn btn-info " style="margin-left: 10px ">Cancel</button>
-</div>
