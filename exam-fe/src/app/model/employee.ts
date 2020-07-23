@@ -6,4 +6,5 @@ export class Employee {
     status: string;
     dateHired: string;
     yearsInCompany: string;
+    data: any;
 }

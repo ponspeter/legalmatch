@@ -15,11 +15,11 @@ export class EmployeeService {
     return this.http.get<Employee>(this.baseUrl + '/' + id);
   }
 
-  createEmployee(employee: Employee): Observable<Employee> {
+  createEmployee(employee: Employee): Observable<any> {
     return this.http.post(this.baseUrl, employee);
   }
 
-  updateEmployee(id: number, emp: Employee): Observable<Employee> {
+  updateEmployee(id: number, emp: Employee): Observable<any> {
     return this.http.patch(this.baseUrl + '/' + id, emp);
   }
 

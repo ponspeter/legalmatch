@@ -12,6 +12,7 @@ export class AppComponent {
 
 export class AppDateAdapter extends NativeDateAdapter {
 
+  // tslint:disable-next-line:ban-types
   format(date: Date, displayFormat: Object): string {
     if (displayFormat === 'input') {
       const day = date.getDate();
