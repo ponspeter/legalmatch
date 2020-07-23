@@ -80,7 +80,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   btnSubmit() {
-    console.log('submit...');
+    console.log('submit..');
     this.primaryContact.isPrimary = true;
     this.secondaryContact.isPrimary = false;
     this.primaryAddress.isPrimary = true;
