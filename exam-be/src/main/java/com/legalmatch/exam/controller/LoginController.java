@@ -7,6 +7,8 @@ import com.legalmatch.exam.service.DefaultLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/login")
@@ -16,7 +18,7 @@ public class LoginController implements DefaultLoginController {
 
     @Override
     @PostMapping()
-    public BaseReponse<UserDto> login(@RequestBody UserDto userDto) {
+    public BaseReponse<UserDto> login(@Valid @RequestBody UserDto userDto) {
         return BaseReponse.<UserDto>builder()
                 .code(ResponseCode.SUCCESS)
                 .data(service.login(userDto))

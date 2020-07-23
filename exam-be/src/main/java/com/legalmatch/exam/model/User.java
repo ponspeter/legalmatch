@@ -8,6 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @Builder
@@ -27,16 +30,22 @@ public class User {
     @JoinColumn(name = "ID_PERSONAL_INFORMATION")
     private PersonalInformation information;
 
+    @Size(min = 1, max = 100)
+    @NotNull
     @Column(name = "USERNAME", length = 100)
     private String username;
 
-    @Column(name = "PASSWORD", length = 100)
+    @NotNull
+    @Size(min = 8, max = 15)
+    @Column(name = "PASSWORD", length = 15)
     private String password;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "ROLE", length = 15)
     private RoleEnum role;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", length = 10)
     private EmployeeStatusEnum status;

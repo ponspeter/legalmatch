@@ -1,5 +1,6 @@
 package com.legalmatch.exam.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.legalmatch.exam.enums.EmployeeStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -27,15 +32,21 @@ public class Employee {
     @JoinColumn(name = "ID_PERSONAL_INFORMATION")
     private PersonalInformation information;
 
+    @Size(min = 1, max = 250)
+    @NotNull
     @Column(name = "POSITION", length = 250)
     private String position;
 
+    @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_HIRED")
     private LocalDate dateHired;
 
-    //@Column(name = "DATE_END")
-    //private LocalDate dateEnd;
+    @NotNull
+    @Column(name = "YEARS_IN_SERVICE")
+    private int yearsInService;
 
+    @NotNull
     @Column(name = "STATUS")
     private EmployeeStatusEnum status;
 }

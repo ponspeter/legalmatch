@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @Builder
@@ -19,25 +22,28 @@ public class Address {
 
     @Id
     @GeneratedValue(generator = "ADDRESS_GEN", strategy = GenerationType.SEQUENCE)
-    //@SequenceGenerator(name = "ADDRESS_GEN", allocationSize = 1, sequenceName = "ADDRESS_SEQ")
     @Column(name = "ID_ADDRESS", nullable = false, unique = true, updatable = false)
     private long id;
 
-    @Column(name = "HOUSE_NUMBER", length = 10)
+    @Column(name = "HOUSE_NUMBER")
     private Long houseNumber;
 
+    @Size(max = 10)
     @Column(name = "STREET", length = 50)
     private String street;
 
+    @Size(max = 10)
     @Column(name = "TOWN", length = 50)
     private String town;
 
+    @Size(max = 10)
     @Column(name = "PROVINCE", length = 50)
     private String province;
 
-    @Column(name = "POSTAL_CODE", length = 10)
+    @Column(name = "POSTAL_CODE")
     private Long postalCode;
 
+    @NotNull
     @Column(name = "IS_PRIMARY")
     private boolean isPrimary;
 

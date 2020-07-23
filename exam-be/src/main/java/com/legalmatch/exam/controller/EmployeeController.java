@@ -7,6 +7,8 @@ import com.legalmatch.exam.service.DefaultEmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController
@@ -27,7 +29,7 @@ public class EmployeeController implements DefaultEmployeeController {
 
     @Override
     @GetMapping("/{id}")
-    public BaseReponse<EmployeeDto> getEmployeeById(@PathVariable("id") Long id) {
+    public BaseReponse<EmployeeDto> getEmployeeById(@Min(1) @PathVariable("id") Long id) {
         return BaseReponse.<EmployeeDto>builder()
                 .code(ResponseCode.SUCCESS)
                 .data(employeeService.getEmployeeById(id))
@@ -36,7 +38,7 @@ public class EmployeeController implements DefaultEmployeeController {
 
     @Override
     @PostMapping()
-    public BaseReponse<EmployeeDto> saveEmployee(@RequestBody EmployeeDto request) {
+    public BaseReponse<EmployeeDto> saveEmployee(@Valid @RequestBody EmployeeDto request) {
         return BaseReponse.<EmployeeDto>builder()
                 .code(ResponseCode.SUCCESS)
                 .data(employeeService.saveEmployee(request))
@@ -45,7 +47,7 @@ public class EmployeeController implements DefaultEmployeeController {
 
     @Override
     @PatchMapping("/{id}")
-    public BaseReponse<EmployeeDto> updateEmployee(@PathVariable("id") Long id, @RequestBody EmployeeDto request) {
+    public BaseReponse<EmployeeDto> updateEmployee(@Min(1) @PathVariable("id") Long id, @Valid @RequestBody EmployeeDto request) {
         return BaseReponse.<EmployeeDto>builder()
                 .code(ResponseCode.SUCCESS)
                 .data(employeeService.updateEmployee(id, request))
@@ -54,7 +56,7 @@ public class EmployeeController implements DefaultEmployeeController {
 
     @Override
     @DeleteMapping("/{id}")
-    public BaseReponse<Void> removeEmployee(@PathVariable("id") Long id) {
+    public BaseReponse<Void> removeEmployee(@Min(1) @PathVariable("id") Long id) {
         return BaseReponse.<Void>builder()
                 .code(ResponseCode.SUCCESS_DELETE)
                 .data(employeeService.removeEmployee(id))

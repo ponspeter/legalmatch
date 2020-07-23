@@ -6,10 +6,10 @@ import java.time.format.DateTimeFormatter;
 
 public class Helper {
 
-    public static String calculateAge(LocalDate birthDate, LocalDate currentDate, boolean ageOnly) {
-        if ((birthDate != null) && (currentDate != null)) {
-            int years = Period.between(birthDate, currentDate).getYears();
-            int months = Period.between(birthDate, currentDate).getMonths();
+    public static String calculateDateToStringNumber(LocalDate paramDate, LocalDate currentDate, boolean ageOnly) {
+        if ((paramDate != null) && (currentDate != null)) {
+            int years = Period.between(paramDate, currentDate).getYears();
+            int months = Period.between(paramDate, currentDate).getMonths();
             if (ageOnly) {
                 return years + "y";
             } else {
@@ -19,6 +19,10 @@ public class Helper {
         } else {
             return "";
         }
+    }
+
+    public static int convertDateToNumber(LocalDate paramDate, LocalDate currentDate) {
+            return Period.between(paramDate, currentDate).getYears();
     }
 
     public static String convertLocalDateToString(LocalDate date) {
