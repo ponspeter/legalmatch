@@ -51,6 +51,8 @@
 
     i. Type [ng update @angular/cli @angular/core --allow-dirty --force]
 
-    j. Type [ng serve] to run frontend
+    j.Type [npm clean-install]
 
-    f. once ready, open the request in browser using the link [http://localhost:4200/login]
+    k. Type [npm start] or [ng serve]  to run frontend
+
+    l. once ready, open the request in browser using the link [http://localhost:4200/login]
