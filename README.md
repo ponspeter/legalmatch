@@ -13,9 +13,7 @@
    a. Java 8
 ```
    b. Maven latest version
-```
    c. Node latest version
-```
    d. Mysql version 8
 ```
 3. Run createSchema.sql in your Mysql database
