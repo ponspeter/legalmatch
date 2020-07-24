@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../../model/employee';
-import { Contacts } from '../../../model/contact';
+import { Contact } from '../../../model/contact';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../../service/employee.service';
-import { Addresses } from '../../../model/Address';
+import { Address } from '../../../model/address';
 import { PersonalInformation } from 'src/app/model/personalInformation';
 
 @Component({
@@ -16,10 +16,10 @@ export class UpdateEmployeeComponent implements OnInit {
   id: number;
   employee: Employee;
   personal: PersonalInformation;
-  primaryContact: Contacts;
-  secondaryContact: Contacts;
-  primaryAddress: Addresses;
-  secondaryAddress: Addresses;
+  primaryContact: Contact;
+  secondaryContact: Contact;
+  primaryAddress: Address;
+  secondaryAddress: Address;
 
 
   constructor(private route: ActivatedRoute,

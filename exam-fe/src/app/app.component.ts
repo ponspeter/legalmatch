@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { NativeDateAdapter } from '@angular/material';
 
 @Component({
@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'Employee Management System';
 }
 
+@Injectable()
 export class AppDateAdapter extends NativeDateAdapter {
 
   // tslint:disable-next-line:ban-types
