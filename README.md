@@ -14,7 +14,7 @@
 
    b. Maven latest version
 
-   c. Node latest version
+   c. Node JS latest version
   
    d. Mysql version 8
 ```
