@@ -43,14 +43,12 @@
 
     e. Type [npm install --save-dev @angular/cli@latest]
 
-    f. Type [npm install -g @angular/cli@latest] Make sure it is running as admin account.
+    Type [npm install -g @angular/cli@latest] admin
 
-    g. Type [ng update]
+    Type [ng update]
 
-    h. Type [ng update @angular/cli @angular/core --force]
+    Type [ng update @angular/cli @angular/core]
 
-    i. Type [ng update @angular/cli @angular/core --allow-dirty --force]
-
-    j. Type [ng serve] to run frontend
+    e. Type [ng serve] to run frontend
 
     f. once ready, open the request in browser using the link [http://localhost:4200/login]

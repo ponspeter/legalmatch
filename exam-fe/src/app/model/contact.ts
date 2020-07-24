@@ -1,5 +1,5 @@
 
-export class Contact {
+export class Contacts {
     contactId: number;
     isPrimary: boolean;
     email: string;

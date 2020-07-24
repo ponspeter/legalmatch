@@ -3,8 +3,8 @@ import { Employee } from '../../../model/employee';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../../../service/employee.service';
 import { PersonalInformation } from 'src/app/model/personalInformation';
-import { Contact } from 'src/app/model/contact';
-import { Address } from 'src/app/model/address';
+import { Contacts } from 'src/app/model/contact';
+import { Addresses } from 'src/app/model/Address';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -18,12 +18,12 @@ export class CreateEmployeeComponent implements OnInit {
   submitted = false;
   employee: Employee = new Employee();
   personal: PersonalInformation = new PersonalInformation();
-  saveContacts: Contact[] = [];
-  primaryContact: Contact = new Contact();
-  secondaryContact: Contact = new Contact();
-  saveAddresses: Address[] = [];
-  primaryAddress: Address = new Address();
-  secondaryAddress: Address = new Address();
+  saveContacts: Contacts[] = [];
+  primaryContact: Contacts = new Contacts();
+  secondaryContact: Contacts = new Contacts();
+  saveAddresses: Addresses[] = [];
+  primaryAddress: Addresses = new Addresses();
+  secondaryAddress: Addresses = new Addresses();
 
   constructor(private employeeService: EmployeeService,
               private router: Router,
