@@ -1,5 +1,5 @@
-import { Contacts } from './contact';
-import { Addresses } from './Address';
+import { Contact } from './contact';
+import { Address } from './address';
 
 export class PersonalInformation {
     id: number;
@@ -9,7 +9,7 @@ export class PersonalInformation {
     gender: string;
     maritalStatus: string;
     age: number;
-    contacts: Contacts[];
-    addresses: Addresses[];
+    contacts: Contact[];
+    addresses: Address[];
 }
 

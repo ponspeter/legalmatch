@@ -39,16 +39,6 @@
 
     c. Type [npm install] to download all dependencies
 
-    d. Type [npm install -g @angular/cli] to install Angular CLI. Make sure it is running as admin account.
-
-    e. Type [npm install --save-dev @angular/cli@latest]
-
-    Type [npm install -g @angular/cli@latest] admin
-
-    Type [ng update]
-
-    Type [ng update @angular/cli @angular/core]
-
-    e. Type [ng serve] to run frontend
+    e. Type [npm start] to run frontend
 
     f. once ready, open the request in browser using the link [http://localhost:4200/login]
