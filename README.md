@@ -37,8 +37,8 @@
     b. Open the project in your favorite ide (Visual Studio Code)
       or open terminal or command prompt.
 
-    c. Type npm install to download all dependencies
+    c. Type [npm install] to download all dependencies
 
     d. Type [ng serve] to run frontend
 
-    e. once ready, open the request in [http://localhost:4200/login]
+    e. once ready, open the request in browser using the link [http://localhost:4200/login]
