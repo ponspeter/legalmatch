@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DefaultEmployeeController {
 
-    BaseReponse<List<EmployeeDto>> getEmployees();
+    List<EmployeeDto> getEmployees();
     BaseReponse<EmployeeDto> getEmployeeById(Long id);
     BaseReponse<EmployeeDto> saveEmployee(EmployeeDto request);
     BaseReponse<EmployeeDto> updateEmployee(Long id, EmployeeDto request);
