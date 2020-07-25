@@ -18,11 +18,8 @@ public class EmployeeController implements DefaultEmployeeController {
 
     @Override
     @GetMapping()
-    public BaseReponse<List<EmployeeDto>> getEmployees() {
-        return BaseReponse.<List<EmployeeDto>>builder()
-                .code(ResponseCode.SUCCESS)
-                .data(employeeService.getEmployees())
-                .build();
+    public List<EmployeeDto> getEmployees() {
+        return employeeService.getEmployees();
     }
 
     @Override
