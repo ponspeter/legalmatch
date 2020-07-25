@@ -42,14 +42,6 @@
 
     c. Type [npm install] to download all dependencies
 
-    d. Type [ng update]
-
-    e. Type [ng update @angular/cli @angular/core --force]
-
-    f. Type [ng update @angular/cli @angular/core --allow-dirty --force]
-
-    g. Type [npm clean-install] to clear all the cache and load a fresh copy of dependencies.
-
-    h. Type [npm start] or [ng serve]  to run frontend
+    e. Type [npm start] to run frontend
 
     i. once ready, open the request in browser using the link [http://localhost:4200/login]
