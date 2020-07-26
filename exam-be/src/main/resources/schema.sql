@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.21, for macos10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for macos10.15 (x86_64)
 --
--- Host: localhost    Database: app_exam
+-- Host: 127.0.0.1    Database: app_exam
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.20
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -42,7 +42,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,197,_binary '',1,1112,'NCR','New Manila','Quezon City'),(54,0,_binary '\0',2,0,NULL,NULL,NULL),(55,466,_binary '',2,1940,'Rizal','Palangoy','Binangonan');
+INSERT INTO `address` VALUES (1,197,_binary '',1,1112,'NCR','New Manila','Quezon City'),(102,466,_binary '',2,1940,'Rizal','Palangoy','Binangonan'),(103,20,_binary '\0',2,1920,'NCR','Twin Oks East Tower','Mandaluyong');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +64,7 @@ CREATE TABLE `address_gen` (
 
 LOCK TABLES `address_gen` WRITE;
 /*!40000 ALTER TABLE `address_gen` DISABLE KEYS */;
-INSERT INTO `address_gen` VALUES (151);
+INSERT INTO `address_gen` VALUES (201);
 /*!40000 ALTER TABLE `address_gen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (1,'jpm@gmail.com',_binary '','09109876543',1,'12345678'),(54,'pons.peter@gmail.com',_binary '','09088854427',2,'6521234'),(55,NULL,_binary '\0',NULL,2,NULL);
+INSERT INTO `contact` VALUES (1,'jpm@gmail.com',_binary '','09109876543',1,'12345678'),(102,'pons.peter@gmail.com',_binary '','09088854427',2,'6521234'),(103,NULL,_binary '\0',NULL,2,NULL);
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +115,7 @@ CREATE TABLE `contact_gen` (
 
 LOCK TABLES `contact_gen` WRITE;
 /*!40000 ALTER TABLE `contact_gen` DISABLE KEYS */;
-INSERT INTO `contact_gen` VALUES (151);
+INSERT INTO `contact_gen` VALUES (201);
 /*!40000 ALTER TABLE `contact_gen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +144,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'1992-01-01','Director',1,28,1),(2,'2011-12-31','Java Dev',1,0,2);
+INSERT INTO `employee` VALUES (1,'1992-01-01','Director',1,28,1),(2,'2011-12-31','Java Dev',1,8,2);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,6 +272,14 @@ LOCK TABLES `user_seq` WRITE;
 INSERT INTO `user_seq` VALUES (3);
 /*!40000 ALTER TABLE `user_seq` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'app_exam'
+--
+
+--
+-- Dumping routines for database 'app_exam'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -282,4 +290,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-26 23:49:13
+-- Dump completed on 2020-07-26 23:56:33
