@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.validation.constraints.Size;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -16,12 +18,15 @@ public class ContactDto {
     @JsonProperty("contactId")
     private long contactId;
 
+    @Size(max = 30)
     @JsonProperty("phone")
     private String phone;
 
+    @Size(max = 30)
     @JsonProperty("mobile")
     private String mobile;
 
+    @Size(max = 100)
     @JsonProperty("email")
     private String email;
 

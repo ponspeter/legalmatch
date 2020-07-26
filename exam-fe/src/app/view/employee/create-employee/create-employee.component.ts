@@ -6,6 +6,7 @@ import { PersonalInformation } from 'src/app/model/personalInformation';
 import { Contact } from 'src/app/model/contact';
 import { Address } from 'src/app/model/address';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -24,13 +25,23 @@ export class CreateEmployeeComponent implements OnInit {
   saveAddresses: Address[] = [];
   primaryAddress: Address = new Address();
   secondaryAddress: Address = new Address();
+  isLoggedin = false;
+  loggedinUser = '';
 
   constructor(private employeeService: EmployeeService,
               private router: Router,
-              private formBuilder: FormBuilder
+              private formBuilder: FormBuilder,
+              private loginService: LoginService
   ) { }
 
   ngOnInit() {
+    this.isLoggedin = this.loginService.isUserLoggedin();
+    this.loggedinUser = this.loginService.getLoggedinUser();
+    if (!this.isLoggedin) {
+      this.router.navigateByUrl('login');
+    }
+
+
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       middleName: ['', Validators.required],

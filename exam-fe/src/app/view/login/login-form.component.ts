@@ -44,9 +44,8 @@ export class LoginComponent implements OnInit {
 
   btnSubmit() {
     console.log(this.user);
-    this.loginService.loginUser(this.user)
+    this.loginService.authenticate(this.user.username, this.user.password)
       .subscribe(res => {
-        console.log(res.data);
         this.gotoList();
       },
         error => console.log(error));
@@ -60,5 +59,10 @@ export class LoginComponent implements OnInit {
   btnCancel() {
     console.log('cancel...');
     this.router.navigate(['/']);
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigateByUrl('login');
   }
 }

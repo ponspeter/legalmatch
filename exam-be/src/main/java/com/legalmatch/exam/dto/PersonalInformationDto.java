@@ -6,6 +6,8 @@ import com.legalmatch.exam.enums.GenderEnum;
 import com.legalmatch.exam.enums.MaritalStatusEnum;
 import lombok.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @AllArgsConstructor
@@ -28,12 +30,16 @@ public class PersonalInformationDto {
     @JsonProperty("personalInformationId")
     private Long personalInformationId;
 
+    @Size(min = 1, max = 50)
+    @NotBlank
     @JsonProperty("firstName")
     private String firstName;
 
     @JsonProperty("middleName")
     private String middleName;
 
+    @Size(min = 1, max = 50)
+    @NotBlank
     @JsonProperty("lastName")
     private String lastName;
 
@@ -49,10 +55,12 @@ public class PersonalInformationDto {
     @JsonProperty("age")
     private String age;
 
+    @Valid
     @JsonProperty("contacts")
     @Singular("contact")
     private List<ContactDto> contacts;
 
+    @Valid
     @JsonProperty("addresses")
     @Singular("address")
     private List<AddressDto> addresses;

@@ -8,20 +8,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/login")
-public class LoginController implements DefaultLoginController {
+@RequestMapping("/api/v1/auth")
+public class LoginController {
 
-    private final DefaultLoginService service;
-
-    @Override
-    @PostMapping()
-    public BaseReponse<UserDto> login(@Valid @RequestBody UserDto userDto) {
-        return BaseReponse.<UserDto>builder()
-                .code(ResponseCode.SUCCESS)
-                .data(service.login(userDto))
-                .build();
+    @GetMapping()
+    public Principal user(Principal user) {
+        System.out.println("PRINCIPAL " + user.getName());
+        return user;
     }
 }

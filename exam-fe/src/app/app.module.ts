@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent,  AppDateAdapter, APP_DATE_FORMATS } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule,
@@ -18,6 +18,7 @@ import { EmployeeDetailsComponent } from './view/employee/employee-details/emplo
 import { EmployeeListComponent } from './view/employee/employee-list/employee-list.component';
 import { UpdateEmployeeComponent } from './view/employee/update-employee/update-employee.component';
 import { LoginComponent } from './view/login/login-form.component';
+import { HttpInterceptorService } from './service/httpInterceptor.service';
 
 
 
@@ -48,6 +49,11 @@ import { LoginComponent } from './view/login/login-form.component';
     },
     {
       provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

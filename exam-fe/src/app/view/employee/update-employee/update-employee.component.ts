@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../../service/employee.service';
 import { Address } from '../../../model/address';
 import { PersonalInformation } from 'src/app/model/personalInformation';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-update-employee',
@@ -20,13 +21,22 @@ export class UpdateEmployeeComponent implements OnInit {
   secondaryContact: Contact;
   primaryAddress: Address;
   secondaryAddress: Address;
+  isLoggedin = false;
+  loggedinUser = '';
 
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private loginService: LoginService,
               private employeeService: EmployeeService) { }
 
   ngOnInit() {
+    this.isLoggedin = this.loginService.isUserLoggedin();
+    this.loggedinUser = this.loginService.getLoggedinUser();
+    if (!this.isLoggedin) {
+      this.router.navigateByUrl('login');
+    }
+
     this.employee = new Employee();
     this.id = this.route.snapshot.params['id'];
     this.employeeService.getEmployee(this.id)

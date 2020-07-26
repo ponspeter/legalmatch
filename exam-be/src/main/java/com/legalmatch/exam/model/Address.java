@@ -28,15 +28,15 @@ public class Address {
     @Column(name = "HOUSE_NUMBER")
     private Long houseNumber;
 
-    @Size(max = 10)
+    @Size(max = 50)
     @Column(name = "STREET", length = 50)
     private String street;
 
-    @Size(max = 10)
+    @Size(max = 50)
     @Column(name = "TOWN", length = 50)
     private String town;
 
-    @Size(max = 10)
+    @Size(max = 50)
     @Column(name = "PROVINCE", length = 50)
     private String province;
 

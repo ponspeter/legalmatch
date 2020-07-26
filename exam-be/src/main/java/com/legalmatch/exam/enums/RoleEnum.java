@@ -2,6 +2,6 @@ package com.legalmatch.exam.enums;
 
 public enum RoleEnum {
 
-    ADMIN,
-    STANDARD_USER
+    ROLE_ADMIN,
+    ROLE_STANDARD_USER
 }

@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -30,15 +32,19 @@ public class EmployeeDto {
     @JsonProperty("employeeId")
     private Long employeeId;
 
+    @Valid
     @JsonProperty("personalInformation")
     private PersonalInformationDto personalInformation;
 
+    @Size(min = 1, max = 250)
+    @NotBlank
     @JsonProperty("position")
     private String position;
 
     @JsonProperty("status")
     private EmployeeStatusEnum status;
 
+    @NotBlank
     @JsonProperty("dateHired")
     private String dateHired;
 

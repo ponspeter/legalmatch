@@ -11,6 +11,7 @@ import { LoginComponent } from './view/login/login-form.component';
 
 
 const routes: Routes = [
+  {path: '', redirectTo: 'employees', pathMatch: 'full'},
   { path: 'employees', component: EmployeeListComponent },
   { path: 'add', component: CreateEmployeeComponent },
   { path: 'update/:id', component: UpdateEmployeeComponent },

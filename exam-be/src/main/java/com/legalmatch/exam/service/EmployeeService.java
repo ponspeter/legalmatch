@@ -11,9 +11,11 @@ import com.legalmatch.exam.repository.*;
 import com.legalmatch.exam.util.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +31,7 @@ public class EmployeeService implements DefaultEmployeeService {
     private final EmployeeRepository employeeRepository;
     private final PersonalInformationRepository personalInformationRepository;
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public List<EmployeeDto> getEmployees() {
@@ -189,9 +192,9 @@ public class EmployeeService implements DefaultEmployeeService {
                 User.builder()
                 .information(personalInformation)
                 .username(request.getPersonalInformation().getLastName().toUpperCase().concat("_").concat(request.getPersonalInformation().getFirstName().toUpperCase()))
-                .password("Salty@123456")
+                .password(passwordEncoder.encode("Salty@123456"))
                 .status(EmployeeStatusEnum.ACTIVE)
-                .role(RoleEnum.STANDARD_USER)
+                .role(RoleEnum.ROLE_STANDARD_USER)
                 .build()
         );
 

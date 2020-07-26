@@ -36,13 +36,13 @@ public class User {
     private String username;
 
     @NotNull
-    @Size(min = 8, max = 15)
-    @Column(name = "PASSWORD", length = 15)
+    @Size(min = 8)
+    @Column(name = "PASSWORD")
     private String password;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "ROLE", length = 15)
+    @Column(name = "ROLE", length = 50)
     private RoleEnum role;
 
     @NotNull
