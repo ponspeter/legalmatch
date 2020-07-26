@@ -235,6 +235,7 @@ public class EmployeeService implements DefaultEmployeeService {
                                 .birthDate(Helper.convertStringToLocalDate(request.getPersonalInformation().getBirthDate()))
                                 .gender(request.getPersonalInformation().getGender())
                                 .maritalStatus(request.getPersonalInformation().getMaritalStatus())
+                                .age(Helper.convertDateToNumber(Helper.convertStringToLocalDate(request.getPersonalInformation().getBirthDate()), LocalDate.now()))
                                 .contacts(request.getPersonalInformation().getContacts()
                                         .stream()
                                         .map(data -> Contact.builder()
@@ -264,6 +265,7 @@ public class EmployeeService implements DefaultEmployeeService {
                                 .information(personalInformation)
                                 .position(request.getPosition())
                                 .dateHired(Helper.convertStringToLocalDate(request.getDateHired()))
+                                .yearsInService(Helper.convertDateToNumber(Helper.convertStringToLocalDate(request.getDateHired()), LocalDate.now()))
                                 .status(request.getStatus())
                                 .build()
                 );
