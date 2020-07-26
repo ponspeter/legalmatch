@@ -48,7 +48,7 @@ spring.datasource.password = Qwerty@123456 # change according to your local setu
 
     e. Type [npm start] to run frontend
 
-    i. It will compile and once ready, open the request in browser using the link [http://localhost:4200/login]
+    i. It will compile and once ready, open the request in browser using the [link] (http://localhost:4200/login)
 
     Login Credentials:
 
