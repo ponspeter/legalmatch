@@ -11,4 +11,5 @@ public interface DefaultEmployeeService {
     EmployeeDto saveEmployee(EmployeeDto request);
     EmployeeDto updateEmployee(Long id, EmployeeDto request);
     Void removeEmployee(Long id);
+    List<EmployeeDto> getEmployees(String search);
 }

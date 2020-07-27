@@ -59,4 +59,10 @@ public class EmployeeController implements DefaultEmployeeController {
                 .data(employeeService.removeEmployee(id))
                 .build();
     }
+
+    @Override
+    @GetMapping("/search")
+    public List<EmployeeDto> searchEmployee(@RequestParam(value = "param") String param) {
+        return employeeService.getEmployees(param);
+    }
 }

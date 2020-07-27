@@ -8,6 +8,8 @@ import com.legalmatch.exam.enums.EmployeeStatusEnum;
 import com.legalmatch.exam.enums.RoleEnum;
 import com.legalmatch.exam.model.*;
 import com.legalmatch.exam.repository.*;
+import com.legalmatch.exam.repository.criteria.SearchOperation;
+import com.legalmatch.exam.repository.specifications.EmployeeSpecification;
 import com.legalmatch.exam.util.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,10 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -299,6 +302,70 @@ public class EmployeeService implements DefaultEmployeeService {
         userRepository.deleteById(personalInformationId);
         employeeRepository.deleteById(personalInformationId);
         return null;
+    }
+
+    @Override
+    public List<EmployeeDto> getEmployees(String search) {
+        System.out.println("GET EMPLOYEES SEARCH :" + search);
+        EmployeeSpecification builder = new EmployeeSpecification();
+        Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+        Matcher matcher = pattern.matcher(search + ",");
+        while (matcher.find()) {
+            builder.with(matcher.group(1), matcher.group(2), SearchOperation.EQUAL);
+        }
+        
+        return employeeRepository.findAll(builder)
+                .stream()
+                .filter(res -> getUserRole(
+                        res.getInformation().getLastName()+"_"+res.getInformation().getFirstName())
+                        .equalsIgnoreCase(RoleEnum.ROLE_STANDARD_USER.name()))
+                .map(res -> EmployeeDto.builder()
+                        .employeeId(res.getId())
+                        .position(res.getPosition())
+                        .status(res.getStatus())
+                        .dateHired(Helper.convertLocalDateToString(res.getDateHired()))
+                        .yearsInCompany(Helper.calculateDateToStringNumber(res.getDateHired(), LocalDate.now(), false))
+                        .personalInformation(
+                                PersonalInformationDto.builder()
+                                        .personalInformationId(res.getInformation().getId())
+                                        .firstName(res.getInformation().getFirstName())
+                                        .middleName(res.getInformation().getMiddleName())
+                                        .lastName(res.getInformation().getLastName())
+                                        .birthDate(Helper.convertLocalDateToString(res.getInformation().getBirthDate()))
+                                        .age(Helper.calculateDateToStringNumber(res.getInformation().getBirthDate(), LocalDate.now(),true))
+                                        .gender(res.getInformation().getGender())
+                                        .maritalStatus(res.getInformation().getMaritalStatus())
+                                        .contacts(
+                                                contactRepository.findByPersonalInformationId(res.getInformation().getId())
+                                                        .stream()
+                                                        .filter(contact -> contact.isPrimary() == Boolean.TRUE)
+                                                        .map(contact -> ContactDto.builder()
+                                                                .contactId(contact.getId())
+                                                                .phone(contact.getPhone())
+                                                                .mobile(contact.getMobile())
+                                                                .email(contact.getEmail())
+                                                                .isPrimary(contact.isPrimary())
+                                                                .build())
+                                                        .collect(Collectors.toList())
+                                        )
+                                        .addresses(
+                                                addressRepository.findByPersonalInformationId(res.getInformation().getId())
+                                                        .stream()
+                                                        .filter(address -> address.isPrimary() == Boolean.TRUE)
+                                                        .map(address -> AddressDto.builder()
+                                                                .addressId(address.getId())
+                                                                .houseNumber(address.getHouseNumber())
+                                                                .street(address.getStreet())
+                                                                .town(address.getTown())
+                                                                .province(address.getProvince())
+                                                                .postalCode(address.getPostalCode())
+                                                                .isPrimary(address.isPrimary())
+                                                                .build())
+                                                        .collect(Collectors.toList())
+                                        )
+                                        .build())
+                        .build())
+                .collect(Collectors.toList());
     }
 
     private String getUserRole(String username) {

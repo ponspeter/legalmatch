@@ -12,4 +12,5 @@ public interface DefaultEmployeeController {
     BaseReponse<EmployeeDto> saveEmployee(EmployeeDto request);
     BaseReponse<EmployeeDto> updateEmployee(Long id, EmployeeDto request);
     BaseReponse<Void> removeEmployee(Long id);
+    List<EmployeeDto> searchEmployee(String search);
 }
