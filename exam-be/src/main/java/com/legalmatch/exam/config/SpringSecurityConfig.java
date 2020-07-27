@@ -22,6 +22,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -72,11 +73,26 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PATCH,"/api/v1/employees/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE,"/api/v1/employees/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET,"/api/v1/employees/**").hasAnyRole("ADMIN", "STANDARD_USER")
-                .anyRequest().authenticated()
+                    .anyRequest()
+                        .authenticated()
                 .and()
-                .httpBasic()
+                    .logout()
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .logoutSuccessUrl("/login?logout")
+                        .deleteCookies("JSESSIONID")
+                        .permitAll()
                 .and()
-                .csrf().disable();
+                    .csrf()
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .and()
+                    .exceptionHandling()
+                        .accessDeniedPage("/403")
+                .and()
+                    .httpBasic()
+                .and()
+                    .csrf()
+                        .disable();
     }
 
     @Bean
