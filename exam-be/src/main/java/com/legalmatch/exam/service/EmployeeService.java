@@ -308,9 +308,10 @@ public class EmployeeService implements DefaultEmployeeService {
     public List<EmployeeDto> getEmployees(String search) {
         System.out.println("GET EMPLOYEES SEARCH :" + search);
         EmployeeSpecification builder = new EmployeeSpecification();
-        Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+        Pattern pattern = Pattern.compile("(\\w+?)(=|<|>)(\\w+?),");
         Matcher matcher = pattern.matcher(search + ",");
         while (matcher.find()) {
+            System.out.println("matcher.group(1) :" + matcher.group(1) + " matcher.group(2) :: " + matcher.group(2));
             builder.with(matcher.group(1), matcher.group(2), SearchOperation.EQUAL);
         }
         

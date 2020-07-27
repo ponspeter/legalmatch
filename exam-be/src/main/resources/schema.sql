@@ -42,7 +42,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (1,197,_binary '',1,1112,'NCR','New Manila','Quezon City'),(102,466,_binary '',2,1940,'Rizal','Palangoy','Binangonan'),(103,20,_binary '\0',2,1920,'NCR','Twin Oks East Tower','Mandaluyong');
+INSERT INTO `address` VALUES (1,197,_binary '',1,1112,'NCR','New Manila','Quezon City'),(168,231,_binary '\0',3,1288,'Batangas','Rizal','Batangas'),(169,777,_binary '',3,1990,'Rizal','Luna','May Bangkal'),(175,9888,_binary '',8,1940,'Rizal','Calumpang','Binangonan'),(166,466,_binary '',2,1940,'Rizal','Palangoy','Binangonan'),(167,20,_binary '\0',2,1920,'NCR','Twin Oks East Tower','Mandaluyong'),(174,333344,_binary '\0',8,1900,'Rizal','Rose','Mambog');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +64,7 @@ CREATE TABLE `address_gen` (
 
 LOCK TABLES `address_gen` WRITE;
 /*!40000 ALTER TABLE `address_gen` DISABLE KEYS */;
-INSERT INTO `address_gen` VALUES (201);
+INSERT INTO `address_gen` VALUES (251);
 /*!40000 ALTER TABLE `address_gen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (1,'jpm@gmail.com',_binary '','09109876543',1,'12345678'),(102,'pons.peter@gmail.com',_binary '','09088854427',2,'6521234'),(103,NULL,_binary '\0',NULL,2,NULL);
+INSERT INTO `contact` VALUES (1,'jpm@gmail.com',_binary '','09109876543',1,'12345678'),(168,'cgar@yahoo.com',_binary '','09261422367',3,'091234567812'),(175,'cgar@yahoo.com',_binary '\0','782421',8,'345345345'),(166,'pons.peter@gmail.com',_binary '','09088854427',2,'6521234'),(167,'char@gmail.com',_binary '\0','09989882131',2,'09081212312'),(169,'tiam@yahoo.com',_binary '\0','3345623434',3,'111111111'),(174,'aron@gmail.com',_binary '','09823832732',8,'127866636');
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +115,7 @@ CREATE TABLE `contact_gen` (
 
 LOCK TABLES `contact_gen` WRITE;
 /*!40000 ALTER TABLE `contact_gen` DISABLE KEYS */;
-INSERT INTO `contact_gen` VALUES (201);
+INSERT INTO `contact_gen` VALUES (251);
 /*!40000 ALTER TABLE `contact_gen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +144,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'1992-01-01','Director',1,28,1),(2,'2011-12-31','Java Dev',1,8,2);
+INSERT INTO `employee` VALUES (1,'1992-01-01','Director',1,28,1),(2,'2011-12-31','Java Dev',1,8,2),(3,'2019-04-24','Sewer',1,1,3),(8,'2015-12-31','CFO',1,4,8);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `employee_seq` (
 
 LOCK TABLES `employee_seq` WRITE;
 /*!40000 ALTER TABLE `employee_seq` DISABLE KEYS */;
-INSERT INTO `employee_seq` VALUES (3);
+INSERT INTO `employee_seq` VALUES (9);
 /*!40000 ALTER TABLE `employee_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +196,7 @@ CREATE TABLE `personal_information` (
 
 LOCK TABLES `personal_information` WRITE;
 /*!40000 ALTER TABLE `personal_information` DISABLE KEYS */;
-INSERT INTO `personal_information` VALUES (1,54,'1966-02-12','Jose','MALE','Manalo','MARRIED','P'),(2,39,'1981-07-26','Peter','MALE','Pons','SINGLE','S');
+INSERT INTO `personal_information` VALUES (1,54,'1966-02-12','Jose','MALE','Manalo','MARRIED','P'),(2,39,'1981-07-26','Peter','MALE','Pons','SINGLE','S'),(3,27,'1993-01-11','Cgar','MALE','Villaranda','SINGLE','T'),(8,28,'1992-01-02','Aron','MALE','Agonos','SINGLE','R');
 /*!40000 ALTER TABLE `personal_information` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +218,7 @@ CREATE TABLE `personal_information_seq` (
 
 LOCK TABLES `personal_information_seq` WRITE;
 /*!40000 ALTER TABLE `personal_information_seq` DISABLE KEYS */;
-INSERT INTO `personal_information_seq` VALUES (3);
+INSERT INTO `personal_information_seq` VALUES (9);
 /*!40000 ALTER TABLE `personal_information_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +247,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'$2a$10$Hktlt4yyx2ODZGNkEOuSk.t3F4DjNBhqnXHkdKu5SEJibpiivXxCu','ROLE_ADMIN','ACTIVE','MANALO_JOSE',1),(2,'$2a$10$xf7DBzz1lB6DfuupTi5W/eqPaDyk30s0k3Lz/rUe9WqlH9NXMrgdK','ROLE_STANDARD_USER','ACTIVE','PONS_PETER',2);
+INSERT INTO `user` VALUES (1,'$2a$10$Hktlt4yyx2ODZGNkEOuSk.t3F4DjNBhqnXHkdKu5SEJibpiivXxCu','ROLE_ADMIN','ACTIVE','MANALO_JOSE',1),(2,'$2a$10$xf7DBzz1lB6DfuupTi5W/eqPaDyk30s0k3Lz/rUe9WqlH9NXMrgdK','ROLE_STANDARD_USER','ACTIVE','PONS_PETER',2),(3,'$2a$10$dNQ.xWIPZQuCdbHoum0.4OvlyC.TCKxUvgj3OEXaji3ARlM/uF6gu','ROLE_STANDARD_USER','ACTIVE','VILLARANDA_CGAR',3),(8,'$2a$10$iuaosITJYWXR2GbsHWBhi.8lHb8z2wJ/jDw22/IIGXeQWW/Y0axCy','ROLE_STANDARD_USER','ACTIVE','AGONOS_ARON',8);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +269,7 @@ CREATE TABLE `user_seq` (
 
 LOCK TABLES `user_seq` WRITE;
 /*!40000 ALTER TABLE `user_seq` DISABLE KEYS */;
-INSERT INTO `user_seq` VALUES (3);
+INSERT INTO `user_seq` VALUES (9);
 /*!40000 ALTER TABLE `user_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,4 +290,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-26 23:56:33
+-- Dump completed on 2020-07-27 15:19:18

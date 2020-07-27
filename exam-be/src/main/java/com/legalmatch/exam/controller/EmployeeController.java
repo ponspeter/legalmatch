@@ -63,6 +63,8 @@ public class EmployeeController implements DefaultEmployeeController {
     @Override
     @GetMapping("/search")
     public List<EmployeeDto> searchEmployee(@RequestParam(value = "param") String param) {
-        return employeeService.getEmployees(param);
+        List<EmployeeDto> list = employeeService.getEmployees(param);
+        System.out.println("SIZE IS ::: " + list.size());
+        return list;
     }
 }
