@@ -38,8 +38,9 @@ public class EmployeeService implements DefaultEmployeeService {
 
           return employeeRepository.findEmployeeByStatus(EmployeeStatusEnum.ACTIVE)
                 .stream()
-                .collect(Collectors.toList())
-                .stream()
+                .filter(res -> getUserRole(
+                        res.getInformation().getLastName()+"_"+res.getInformation().getFirstName())
+                                    .equalsIgnoreCase(RoleEnum.ROLE_STANDARD_USER.name()))
                 .map(res -> EmployeeDto.builder()
                         .employeeId(res.getId())
                         .position(res.getPosition())
@@ -298,5 +299,12 @@ public class EmployeeService implements DefaultEmployeeService {
         userRepository.deleteById(personalInformationId);
         employeeRepository.deleteById(personalInformationId);
         return null;
+    }
+
+    private String getUserRole(String username) {
+        return userRepository
+                .findByUsernameAndStatus(username, EmployeeStatusEnum.ACTIVE)
+                .getRole()
+                .name();
     }
 }
