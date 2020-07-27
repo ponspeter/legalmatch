@@ -43,17 +43,22 @@ export class LoginComponent implements OnInit {
   }
 
   btnSubmit() {
-    console.log(this.user);
     this.loginService.authenticate(this.user.username, this.user.password)
       .subscribe(res => {
-        this.gotoList();
+        this.gotoList(this.loginService.user.data.role, 
+          this.loginService.user.data.personalInformation.personalInformationId);
       },
         error => console.log(error));
 }
 
-  gotoList() {
+  gotoList(role: string, infoId:number) {
     console.log('gotoList...');
-    this.router.navigate(['/employees']);
+    if (role === 'ROLE_ADMIN') {
+      this.router.navigate(['/employees']);
+    } else {
+      this.router.navigate(['/update/'+infoId]);
+    }
+    
   }
 
   btnCancel() {

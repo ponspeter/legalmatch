@@ -24,19 +24,11 @@ import java.util.stream.Collectors;
 public class LoginService implements DefaultLoginService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public UserDto login(UserDto dto) {
-        User findUserPassword = userRepository.findByUsernameAndStatus(dto.getUsername(), EmployeeStatusEnum.ACTIVE);
+        User user = userRepository.findByUsernameAndStatus(dto.getUsername(), EmployeeStatusEnum.ACTIVE);
 
-        System.out.println(passwordEncoder.matches(dto.getPassword(), findUserPassword.getPassword()));
-
-        String encodedPassword = passwordEncoder.matches(dto.getPassword(), findUserPassword.getPassword())
-                ? findUserPassword.getPassword() : "Password mismatch";
-
-        User user = userRepository.findByUsernameAndPasswordAndStatus(
-                dto.getUsername(), encodedPassword, EmployeeStatusEnum.ACTIVE);
         return UserDto.builder()
                 .username(user.getUsername())
                 .status(user.getStatus())

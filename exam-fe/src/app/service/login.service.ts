@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 
     public username: string;
     public password: string;
+    public user: any;
 
     constructor(private http: HttpClient) { }
 
@@ -21,6 +22,7 @@ import { map } from 'rxjs/operators';
           .pipe(map((res) => {
             this.username = username;
             this.password = password;
+            this.user = res;
             this.registerSuccessfulLogin(username, password);
         }));
     }
@@ -45,9 +47,9 @@ import { map } from 'rxjs/operators';
         return true;
     }
 
-      getLoggedinUser() {
-        let user = sessionStorage.getItem(this.SESSION_KEY);
-        if (user === null) { return ''; }
-        return user;
-      }
+    getLoggedinUser() {
+      let user = sessionStorage.getItem(this.SESSION_KEY);
+      if (user === null) { return ''; }
+      return user;
+    }
   }
