@@ -57,7 +57,8 @@ export class CreateEmployeeComponent implements OnInit {
       houseNumber: ['', Validators.required],
       street: ['', Validators.maxLength],
       town: ['', Validators.required],
-      province: ['', Validators.required]
+      province: ['', Validators.required],
+      postalCode: ['', Validators.required]
     });
   }
 

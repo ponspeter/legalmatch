@@ -321,7 +321,7 @@ public class EmployeeService implements DefaultEmployeeService {
                 } else if (matcher.group(2).equalsIgnoreCase(">")) {
                     builder.with(info.concat(matcher.group(1)), matcher.group(3), SearchOperation.GREATER_THAN);
                 }
-            } else {
+            } else { // search for employee
                 if (matcher.group(2).equalsIgnoreCase("=")) {
                     builder.with(matcher.group(1), matcher.group(3), SearchOperation.EQUAL);
                 } else if (matcher.group(2).equalsIgnoreCase("<")) {

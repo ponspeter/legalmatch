@@ -51,14 +51,13 @@ export class LoginComponent implements OnInit {
         error => console.log(error));
 }
 
-  gotoList(role: string, infoId:number) {
+  gotoList(role: string, infoId: number) {
     console.log('gotoList...');
     if (role === 'ROLE_ADMIN') {
       this.router.navigate(['/employees']);
     } else {
-      this.router.navigate(['/update/'+infoId]);
+      this.router.navigate(['/details/' + infoId]);
     }
-    
   }
 
   btnCancel() {

@@ -6,6 +6,7 @@ import { EmployeeService } from '../../../service/employee.service';
 import { Address } from '../../../model/address';
 import { PersonalInformation } from 'src/app/model/personalInformation';
 import { LoginService } from 'src/app/service/login.service';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-update-employee',
@@ -14,6 +15,10 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class UpdateEmployeeComponent implements OnInit {
 
+  /** FORM VALIDATION */
+  registerForm: FormGroup;
+  submitted = false;
+  /** FORM VALIDATION */
   id: number;
   employee: Employee;
   personal: PersonalInformation;
@@ -28,6 +33,7 @@ export class UpdateEmployeeComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private loginService: LoginService,
+              private formBuilder: FormBuilder,
               private employeeService: EmployeeService) { }
 
   ngOnInit() {
@@ -60,7 +66,42 @@ export class UpdateEmployeeComponent implements OnInit {
         });
 
       }, error => console.log(error));
+
+  /** FORM VALIDATION */
+    this.registerForm = this.formBuilder.group({
+    firstName: ['', Validators.required],
+    middleName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    maritalStatus: ['', Validators.required],
+    birthDate: ['', Validators.required],
+    position: ['', Validators.required],
+    dateHired: ['', Validators.required],
+    gender: ['', Validators.required],
+    phone: ['', Validators.maxLength],
+    mobile: ['', Validators.required],
+    email: ['', Validators.maxLength],
+    houseNumber: ['', Validators.required],
+    street: ['', Validators.maxLength],
+    town: ['', Validators.required],
+    province: ['', Validators.required],
+    postalCode: ['', Validators.required]
+  });
+  /** FORM VALIDATION */
   }
+
+  /** FORM VALIDATION */
+  get f() {
+    return this.registerForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
+    }
+  }
+  /** FORM VALIDATION */
 
   updateEmployee() {
     this.employeeService.updateEmployee(this.id, this.employee)

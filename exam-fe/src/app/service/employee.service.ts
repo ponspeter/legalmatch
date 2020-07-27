@@ -30,4 +30,9 @@ export class EmployeeService {
   getEmployeesList(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.baseUrl);
   }
+
+  // sample search param :  yearsInService<5, yearsInService>5, yearsInService=5, position=CFO
+  searchEmployees(searchParam: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.baseUrl + 'search?param=' + searchParam);
+  }
 }

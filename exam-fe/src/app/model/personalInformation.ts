@@ -9,6 +9,7 @@ export class PersonalInformation {
     gender: string;
     maritalStatus: string;
     age: number;
+    birthDate: string;
     contacts: Contact[];
     addresses: Address[];
 }

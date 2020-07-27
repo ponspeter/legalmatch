@@ -1,20 +1,242 @@
 <h2>Employee Details</h2>
 
-<hr/>
-<div *ngIf="employee">
-    <div>
-        <label><b>First Name: </b></label> {{employee.personalInformation.firstName}}
-    </div>
-    <div>
-        <label><b>Last Name: </b></label> {{employee.personalInformation.lastName}}
+<form>
+    <!-- start personal information -->
+    <h5>Personal Employee Details</h5>
+
+    <div class="col-sm-4">
+        <div class="md-form form-group">
+            <select class="browser-default custom-select">
+                <option selected>Select Key</option>
+                <option value="position">Select by Position</option>
+                <option value="firstName">Select by Years and Services equals</option>
+                <option value="firstName">Select by Years and Services Greater than</option>
+                <option value="firstName">Select by Years and Services Less than</option>
+              </select>
+        </div>
     </div>
 
-    <div>
-        <label><b>Last: </b></label> {{employee.personalInformation.email}}
+    <label for="name">Status : </label> {{employee.status}}
+    <div class="form-row" id="personInfo">
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="employee.personalInformation.firstName" name="firstName" readonly/>
+
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="personal.middleName" name="middleName" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="personal.lastName" name="lastName" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Marital Status</label>
+                <input type="text" class="form-control" required [(ngModel)]="personal.maritalStatus" name="maritalStatus" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="position">Position</label>
+                <input type="text" class="form-control" required [(ngModel)]="employee.position" name="position" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="position">Gender</label>
+                <input type="text" class="form-control" name="gender" id="gender" required [(ngModel)]="personal.gender" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Date Hired</label><br>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" class="form-control" id="dateHired" required [(ngModel)]="employee.dateHired" name="dateHired" readonly/>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="birthDate">Birth Date</label><br>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="bDate" class="form-control" id="birthDate" required [(ngModel)]="personal.birthDate" name="birthDate" readonly/>
+                    <mat-datepicker-toggle matSuffix [for]="bDate"></mat-datepicker-toggle>
+                    <mat-datepicker #bDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <!-- start personal information -->
+
+
+
+    <!-- start contact information -->
+    <h5>Contact Information</h5>
+
+    <div class="form-group">
+        <div class="maxl">
+            <span>Main :  </span>
+        </div>
     </div>
 
-</div>
+    <div class="form-row">
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Phone Number</label>
+                <input type="text" class="form-control" id="phone" required [(ngModel)]="primaryContact.phone" name="phone" readonly/>
+            </div>
+        </div>
 
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Mobile Number</label>
+                <input type="text" class="form-control" id="mobile" required [(ngModel)]="primaryContact.mobile" name="mobile" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Email</label>
+                <input type="text" class="form-control" id="email" required [(ngModel)]="primaryContact.email" name="email" readonly/>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="maxl">
+            <span>Optional :  </span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-sm-4" [formGroup]="registerForm">
+            <div class="md-form form-group">
+                <label for="name">Phone Number</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryContact.phone" [ngModelOptions]="{standalone: true}" name="phone" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4" [formGroup]="registerForm">
+            <div class="md-form form-group">
+                <label for="name">Mobile Number</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryContact.mobile" [ngModelOptions]="{standalone: true}" name="mobile" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4" [formGroup]="registerForm">
+            <div class="md-form form-group">
+                <label for="name">Email</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryContact.email" [ngModelOptions]="{standalone: true}" name="email" readonly/>
+            </div>
+        </div>
+    </div>
+    <!-- end contact information -->
+
+    <!-- start address information -->
+    <h5>Addresses Information</h5>
+
+    <div class="form-group">
+        <div class="maxl">
+            <span>Main :  </span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">House Number</label>
+                <input type="text" class="form-control" id="houseNumber" required [(ngModel)]="primaryAddress.houseNumber" name="houseNumber" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Street</label>
+                <input type="text" class="form-control" id="street" required [(ngModel)]="primaryAddress.street" name="street" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Town</label>
+                <input type="text" class="form-control" id="town" required [(ngModel)]="primaryAddress.town" name="town" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Province</label>
+                <input type="text" class="form-control" id="province" required [(ngModel)]="primaryAddress.province" name="province" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Postal Code</label>
+                <input type="text" class="form-control" id="postalCode" required [(ngModel)]="primaryAddress.postalCode" name="postalCode" readonly/>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="maxl">
+            <span>Optional :  </span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-sm-4" [formGroup]="registerForm">
+            <div class="md-form form-group">
+                <label for="houseNumber2">House Number</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryAddress.houseNumber" [ngModelOptions]="{standalone: true}" name="houseNumber" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Street</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryAddress.street" [ngModelOptions]="{standalone: true}" name="street" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Town</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryAddress.town" [ngModelOptions]="{standalone: true}" name="town" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Province</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryAddress.province" [ngModelOptions]="{standalone: true}" name="province" readonly/>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Postal Code</label>
+                <input type="text" class="form-control" [(ngModel)]="secondaryAddress.postalCode" [ngModelOptions]="{standalone: true}" name="postalCode" readonly/>
+            </div>
+        </div>
+    </div>
+    <br>
+</form>

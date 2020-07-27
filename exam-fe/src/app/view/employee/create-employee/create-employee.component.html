@@ -54,14 +54,14 @@
 
         <div class="col-sm-4">
             <div class="md-form form-group">
-                <label for="birthDate">Birth Date</label>
+                <label for="birthDate">Birth Date</label><br>
                 <mat-form-field>
                     <input matInput [matDatepicker]="bDate" class="form-control" id="birthDate" required [(ngModel)]="personal.birthDate" formControlName="birthDate" [ngClass]="{'is-invalid': submitted && f.birthDate.errors}" name="birthDate" placeholder="Select Birthdate">
                     <mat-datepicker-toggle matSuffix [for]="bDate"></mat-datepicker-toggle>
                     <mat-datepicker #bDate></mat-datepicker>
                 </mat-form-field>
                 <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
-                    <div *ngIf="f.birthDate.errors.required">Required Birthdate</div>
+                    <div *ngIf="f.birthDate.errors.required">Required Birth date</div>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
 
         <div class="col-sm-4">
             <div class="md-form form-group">
-                <label for="name">Date Hired</label>
+                <label for="name">Date Hired</label><br>
                 <mat-form-field>
                     <input matInput [matDatepicker]="picker" placeholder="Choose a date" class="form-control" id="dateHired" required [(ngModel)]="employee.dateHired" formControlName="dateHired" [ngClass]="{'is-invalid': submitted && f.dateHired.errors}" name="dateHired">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -125,8 +125,7 @@
                 <label for="name">Phone Number</label>
                 <input type="text" class="form-control" id="phone" required [(ngModel)]="primaryContact.phone" placeholder="Your Phone number" formControlName="phone" [ngClass]="{'is-invalid': submitted && f.phone.errors}" ngModel maxlength="30" name="phone">
                 <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                    <div *ngIf="f.phone.errors.required">Required</div>
-                    <div *ngIf="f.phone.errors.required">Max Number 30</div>
+                    <div *ngIf="f.phone.errors.required">Required Max Number 30</div>
                 </div>
             </div>
         </div>
@@ -136,8 +135,7 @@
                 <label for="name">Mobile Number</label>
                 <input type="text" class="form-control" id="mobile" required [(ngModel)]="primaryContact.mobile" placeholder="Your Mobile number" formControlName="mobile" [ngClass]="{'is-invalid': submitted && f.mobile.errors}" ngModel maxlength="30" name="mobile">
                 <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
-                    <div *ngIf="f.mobile.errors.required">Required</div>
-                    <div *ngIf="f.mobile.errors.required">Max Number 30</div>
+                    <div *ngIf="f.mobile.errors.required">Required Max Number 30</div>
                 </div>
             </div>
         </div>
@@ -232,11 +230,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Postal Code</label>
+                <input type="text" class="form-control" id="postalCode" required [(ngModel)]="primaryAddress.postalCode" formControlName="postalCode" [ngClass]="{'is-invalid': submitted && f.postalCode.errors}" ngModel maxlength="50" placeholder="Postal Code" name="postalCode">
+                <div *ngIf="submitted && f.province.errors" class="invalid-feedback">
+                    <div *ngIf="f.postalCode.errors.required">Required Postal Code</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
         <div class="maxl">
-            <span>Main :  </span>
+            <span>Optional :  </span>
         </div>
     </div>
 
@@ -244,28 +252,35 @@
         <div class="col-sm-4">
             <div class="md-form form-group">
                 <label for="name">House Number</label>
-                <input type="text" class="form-control" id="houseNumber" required [(ngModel)]="primaryAddress.houseNumber" placeholder="House number" name="houseNumber">
+                <input type="text" class="form-control" id="houseNumber" required [(ngModel)]="secondaryAddress.houseNumber" placeholder="House number" name="houseNumber">
             </div>
         </div>
 
         <div class="col-sm-4">
             <div class="md-form form-group">
                 <label for="name">Street</label>
-                <input type="text" class="form-control" id="street" required [(ngModel)]="primaryAddress.street" placeholder="Street" name="street">
+                <input type="text" class="form-control" id="street" required [(ngModel)]="secondaryAddress.street" placeholder="Street" name="street">
             </div>
         </div>
 
         <div class="col-sm-4">
             <div class="md-form form-group">
                 <label for="name">Town</label>
-                <input type="text" class="form-control" id="town" required [(ngModel)]="primaryAddress.town" placeholder="Town" name="town">
+                <input type="text" class="form-control" id="town" required [(ngModel)]="secondaryAddress.town" placeholder="Town" name="town">
             </div>
         </div>
 
         <div class="col-sm-4">
             <div class="md-form form-group">
                 <label for="name">Province</label>
-                <input type="text" class="form-control" id="province" required [(ngModel)]="primaryAddress.province" placeholder="Province" name="province">
+                <input type="text" class="form-control" id="province" required [(ngModel)]="secondaryAddress.province" placeholder="Province" name="province">
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <label for="name">Postal Code</label>
+                <input type="text" class="form-control" id="postalCode" required [(ngModel)]="secondaryAddress.postalCode" placeholder="Postal Code" name="postalCode">
             </div>
         </div>
     </div>
