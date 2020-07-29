@@ -33,6 +33,6 @@ export class EmployeeService {
 
   // sample search param :  yearsInService<5, yearsInService>5, yearsInService=5, position=CFO
   searchEmployees(searchParam: string): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.baseUrl + 'search?param=' + searchParam);
+    return this.http.get<Employee[]>(this.baseUrl + '/search?param=' + searchParam);
   }
 }

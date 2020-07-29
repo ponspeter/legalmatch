@@ -1,21 +1,77 @@
-<h2>Employee Details</h2>
+<div class="panel panel-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <div class="panel-heading">
+                    <h2>Employee Details</h2>
+                </div>
+            </li>
+            <li>
+                <a routerLink="/login" class="nav-link" style="padding-left: 700px;" routerLinkActive="active">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <br>
 
-<form>
-    <!-- start personal information -->
-    <h5>Personal Employee Details</h5>
-
-    <div class="col-sm-4">
-        <div class="md-form form-group">
-            <select class="browser-default custom-select">
+    <div class="form-row">
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <select class="browser-default custom-select" (change)="selectChangeHandler($event)">
                 <option selected>Select Key</option>
-                <option value="position">Select by Position</option>
-                <option value="firstName">Select by Years and Services equals</option>
-                <option value="firstName">Select by Years and Services Greater than</option>
-                <option value="firstName">Select by Years and Services Less than</option>
+                <option value="position=">Position</option>
+                <option value="yearsInService=">Years in Service equals (=)</option>
+                <option value="yearsInService&gt;">Years in Service Greater than (&gt;)</option>
+                <option value="yearsInService&lt;">Years in Service Less than (&lt;)</option>
               </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <input type="text" [(ngModel)]="value" class="form-control" placeholder="Search" />
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="md-form form-group">
+                <button type="button" (click)="toggle()" id="bt" (click)="searchEmployees(key, value)" class="btn btn-secondary">Submit</button>
+            </div>
         </div>
     </div>
 
+    <div class="panel-body" *ngIf="show">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Primary Address</th>
+                    <th>Primary Contact Info</th>
+                    <th>Tenure</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <td>{{employee.personalInformation.firstName + ' ' + employee.personalInformation.lastName}}</td>
+                    <td>{{employee.position}}</td>
+                    <td>{{employee.personalInformation.contacts[0].mobile}}</td>
+                    <td>{{employee.personalInformation.addresses[0].street + ' ' + employee.personalInformation.addresses[0].town + ' ' + employee.personalInformation.addresses[0].province}}</td>
+                    <td>{{employee.yearsInCompany}}</td>
+                    <td>
+                        <button id="bt" class="btn btn-primary" (click)="details(employee.employeeId)" style="margin-left: 10px">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br>
+
+<form>
+    <h2>Personal Employee Details</h2>
+    <!-- start personal information -->
+    <h5>Personal Details</h5>
     <label for="name">Status : </label> {{employee.status}}
     <div class="form-row" id="personInfo">
 
@@ -239,4 +295,5 @@
         </div>
     </div>
     <br>
+    <!--button type="button" (click)="toggle()" class="btn btn-info " style="margin-left: 10px ">Cancel</button-->
 </form>

@@ -13,6 +13,7 @@ import com.legalmatch.exam.repository.specifications.EmployeeSpecification;
 import com.legalmatch.exam.util.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -152,9 +153,9 @@ public class EmployeeService implements DefaultEmployeeService {
 
         PersonalInformation personalInformation = personalInformationRepository.save(
                 PersonalInformation.builder()
-                    .firstName(request.getPersonalInformation().getFirstName())
-                    .middleName(request.getPersonalInformation().getMiddleName())
-                    .lastName(request.getPersonalInformation().getLastName())
+                    .firstName(StringUtils.deleteWhitespace(request.getPersonalInformation().getFirstName()))
+                    .middleName(StringUtils.deleteWhitespace(request.getPersonalInformation().getMiddleName()))
+                    .lastName(StringUtils.deleteWhitespace(request.getPersonalInformation().getLastName()))
                     .birthDate(Helper.convertStringToLocalDate(request.getPersonalInformation().getBirthDate()))
                     .gender(request.getPersonalInformation().getGender())
                     .maritalStatus(request.getPersonalInformation().getMaritalStatus())
@@ -195,7 +196,7 @@ public class EmployeeService implements DefaultEmployeeService {
         User user = userRepository.save(
                 User.builder()
                 .information(personalInformation)
-                .username(request.getPersonalInformation().getLastName().toUpperCase().concat("_").concat(request.getPersonalInformation().getFirstName().toUpperCase()))
+                .username(StringUtils.deleteWhitespace(request.getPersonalInformation().getLastName()).toUpperCase().concat("_").concat(StringUtils.deleteWhitespace(request.getPersonalInformation().getFirstName()).toUpperCase()))
                 .password(passwordEncoder.encode("Salty@123456"))
                 .status(EmployeeStatusEnum.ACTIVE)
                 .role(RoleEnum.ROLE_STANDARD_USER)
@@ -233,9 +234,9 @@ public class EmployeeService implements DefaultEmployeeService {
                 personalInformationRepository.save(
                         personalInformation.builder()
                                 .id(personalInformation.getId())
-                                .firstName(request.getPersonalInformation().getFirstName())
-                                .middleName(request.getPersonalInformation().getMiddleName())
-                                .lastName(request.getPersonalInformation().getLastName())
+                                .firstName(StringUtils.deleteWhitespace(request.getPersonalInformation().getFirstName()))
+                                .middleName(StringUtils.deleteWhitespace(request.getPersonalInformation().getMiddleName()))
+                                .lastName(StringUtils.deleteWhitespace(request.getPersonalInformation().getLastName()))
                                 .birthDate(Helper.convertStringToLocalDate(request.getPersonalInformation().getBirthDate()))
                                 .gender(request.getPersonalInformation().getGender())
                                 .maritalStatus(request.getPersonalInformation().getMaritalStatus())
@@ -262,6 +263,25 @@ public class EmployeeService implements DefaultEmployeeService {
                                         .collect(Collectors.toSet()))
                                 .build()
                 );
+
+                Optional<User> optionalUser =
+                        userRepository.findById(employee.getInformation().getId());
+
+                if(optionalUser.isPresent()) {
+
+                    User user = optionalUser.get();
+
+                     userRepository.save(
+                            User.builder()
+                                    .id(user.getId())
+                                    .information(personalInformation)
+                                    .username(StringUtils.deleteWhitespace(request.getPersonalInformation().getLastName()).toUpperCase().concat("_").concat(StringUtils.deleteWhitespace(request.getPersonalInformation().getFirstName()).toUpperCase()))
+                                    .password(passwordEncoder.encode("Salty@123456"))
+                                    .status(EmployeeStatusEnum.ACTIVE)
+                                    .role(RoleEnum.ROLE_STANDARD_USER)
+                                    .build()
+                    );
+                }
 
                 employeeRepository.save(
                         employee.builder()

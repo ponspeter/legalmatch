@@ -53,8 +53,11 @@ spring.datasource.password = Qwerty@123456 # change according to your local setu
     Login Credentials:
 
     Role                     Username                Password
-    ADMIN                  MANALO_JOSE            Qwerty@123456
-    STANDARD_USER          PONS_PETER             Salty@123456
+    ADMIN                  MANALO_JOSE             Qwerty@123456
+    STANDARD_USER          PONS_PETER              Salty@123456
+    STANDARD_USER          LIRIO_KAREN             Salty@123456
+    STANDARD_USER          AGONOS_ARON             Salty@123456
+    STANDARD_USER          VILLARANDA_EMMAN        Salty@123456
 
     Note: Every time a new employee is add, he / she can login in the application with his /her username "LASTNAME_FIRSTNAME" and password "Salty@123456"
            

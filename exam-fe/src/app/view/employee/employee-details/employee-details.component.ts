@@ -26,6 +26,11 @@ export class EmployeeDetailsComponent implements OnInit {
   secondaryAddress: Address;
   isLoggedin = false;
   loggedinUser = '';
+  key: string;
+  value: string;
+  employees: Employee[];
+  public show = false;
+  public buttonName: any = 'Show';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -38,10 +43,13 @@ export class EmployeeDetailsComponent implements OnInit {
     if (!this.isLoggedin) {
       this.router.navigateByUrl('login');
     }
+    this.id = this.route.snapshot.params.id;
+    this.loadEmployeeDetails(this.id);
+  }
 
+  loadEmployeeDetails(id: number) {
     this.employee = new Employee();
-    this.id = this.route.snapshot.params['id'];
-    this.employeeService.getEmployee(this.id)
+    this.employeeService.getEmployee(id)
       .subscribe(res => {
         this.employee = res.data;
         this.personal = this.employee.personalInformation;
@@ -62,5 +70,48 @@ export class EmployeeDetailsComponent implements OnInit {
         });
 
       }, error => console.log(error));
+  }
+
+  btnCancel() {
+    console.log('cancel...');
+    this.router.navigate(['/details']);
+  }
+
+  selectChangeHandler(event: any) {
+    // update the ui
+    this.key = event.target.value;
+  }
+
+  searchEmployees() {
+    const param = this.key + this.value;
+    this.employeeService.searchEmployees(param).subscribe(res => {
+      this.employees = res;
+    }, error => console.log(error));
+  }
+  /** Filtering data */
+
+  /** toggle */
+  toggle() {
+
+    this.show = !this.show;
+
+    // CHANGE THE NAME OF THE BUTTON.
+    if (this.show) {
+      this.buttonName = 'Hide';
+    } else {
+      this.buttonName = 'Show';
     }
+  }
+  /** toggle */
+  details(id: number) {
+    this.show = !this.show;
+    // CHANGE THE NAME OF THE BUTTON.
+    if (this.show) {
+      this.buttonName = 'Hide';
+    } else {
+      this.loadEmployeeDetails(id);
+      this.buttonName = 'Show';
+    }
+  }
+
 }
